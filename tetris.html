@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple Tetris</title>
+<style>
+:root { --bg:#0d0f14; --panel:#141926; --text:#e6edf3; --muted:#99a3b1; --accent:#7cc7ff; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; background:linear-gradient(180deg,#0b1020,#0a0d14); color:var(--text); display:grid; min-height:100svh; place-items:center; }
+.wrap { display:grid; grid-template-columns: 1fr auto; gap:18px; padding:18px; width:min(1100px,95vw); }
+.panel { background:var(--panel); border:1px solid #1f2940; border-radius:16px; padding:14px; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+canvas { background:#0b0f1a; border-radius:12px; display:block; }
+.sidebar { width:300px; display:grid; gap:12px; align-content:start; }
+h1 { font-size:20px; margin:0 0 6px; letter-spacing:.3px; color:#b9d7ff; }
+.stat { display:flex; justify-content:space-between; background:#0f1422; padding:10px 12px; border-radius:12px; border:1px solid #1f2940; }
+.kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f1422; border:1px solid #26324f; padding:2px 6px; border-radius:6px; color:#cfe6ff; }
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+.controls { font-size:14px; color:var(--muted); line-height:1.5; }
+.btns { display:flex; gap:8px; }
+button { cursor:pointer; border:1px solid #2a3a5f; background:#0f1422; color:var(--text); padding:10px 12px; border-radius:10px; font-weight:600; }
+button:hover { border-color:#3b5aa6; }
+.mini { display:grid; grid-template-columns:auto 1fr; gap:8px; align-items:center; }
+#nextCanvas, #holdCanvas { background:#0b0f1a; border-radius:8px; border:1px solid #1f2940; }
+footer { text-align:center; color:var(--muted); font-size:12px; margin-top:8px; }
+@media (max-width: 840px){ .wrap { grid-template-columns: 1fr; } .sidebar { width:auto; grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="panel">
+<canvas id="game" width="300" height="600" aria-label="Tetris board"></canvas>
+</div>
+<div class="sidebar">
+<div class="panel">
+<h1>Simple Tetris</h1>
+<div class="grid">
+<div class="stat"><span>スコア</span><strong id="score">0</strong></div>
+<div class="stat"><span>ライン</span><strong id="lines">0</strong></div>
+<div class="stat"><span>レベル</span><strong id="level">1</strong></div>
+<div class="stat"><span>状態</span><strong id="state">PLAY</strong></div>
+</div>
+<div class="mini" style="margin-top:10px;">
+<span>Next</span>
+<canvas id="nextCanvas" width="120" height="120"></canvas>
+</div>
+<div class="mini">
+<span>Hold</span>
+<canvas id="holdCanvas" width="120" height="120"></canvas>
+</div>
+<div class="btns" style="margin-top:10px;">
+<button id="btnRestart">リスタート <span class="kbd">R</span></button>
+<button id="btnPause">一時停止 <span class="kbd">P</span></button>
+</div>
+</div>
+<div class="panel controls">
+<strong>操作方法</strong><br>
+<span class="kbd">← →</span> 移動 / <span class="kbd">↓</span> ソフトドロップ<br>
+<span class="kbd">↑</span> 回転 / <span class="kbd">SPACE</span> ハードドロップ<br>
+<span class="kbd">C</span> ホールド / <span class="kbd">P</span> ポーズ / <span class="kbd">R</span> リスタート
+</div>
+<footer>純HTML+JSの単一ファイル。ブラウザでそのまま動きます。</footer>
+</div>
+</div>
+<script>
+// ここに前回のJavaScriptロジックをそのまま入れる
+</script>
+</body>
+</html>
